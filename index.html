@@ -256,6 +256,13 @@
             z-index: 40; /* Above the overlay */
             position: relative; /* Needed for z-index to work correctly */
         }
+
+        /* Topping Selection Style */
+        .topping-badge.selected {
+            border: 2px solid #ff6b6b; /* Pink border for selected toppings */
+            box-shadow: 0 0 8px rgba(255, 107, 107, 0.5); /* Soft pink glow */
+            transform: scale(1.05); /* Slightly enlarge on selection */
+        }
     </style>
 </head>
 <body>
@@ -1001,7 +1008,7 @@
                             <span>${item.quantity}</span>
                             <button data-id="${item.id}" class="increase-quantity-btn bg-gray-200 text-gray-700 px-2 py-1 rounded">+</button>
                             <button data-id="${item.id}" class="remove-from-cart-btn text-red-500 hover:text-red-700 ml-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 20 20" stroke="currentColor">
                                     <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm6 0a1 1 0 11-2 0v6a1 1 0 112 0V8z" clip-rule="evenodd" />
                                 </svg>
                             </button>
@@ -1061,13 +1068,14 @@
             { name: "Arándanos", price: 0.00, id: "t4" },
             { name: "Fresas", price: 0.00, id: "t5" },
             { name: "Plátano", price: 0.00, id: "t6" },
-            // Removed Mango topping
             { name: "Miel", price: 0.00, id: "t8" }
         ];
 
         function openCustomizeBowlModal(bowlName, bowlPrice, bowlId) {
             currentBowlForCustomization = { name: bowlName, price: bowlPrice, id: bowlId };
-            selectedToppingsForCurrentBowl = []; // Reset selected toppings for new customization
+            // Initialize selectedToppingsForCurrentBowl based on existing cart item if editing, or empty if new
+            // For now, it's always new, so reset it.
+            selectedToppingsForCurrentBowl = []; 
 
             customizeBowlName.textContent = `Personalizar ${bowlName}`;
             customizeBowlPrice.textContent = formatPrice(bowlPrice);
@@ -1077,22 +1085,23 @@
             // Dynamically render topping options in the modal
             allToppings.forEach(topping => {
                 const toppingElement = document.createElement('div');
-                toppingElement.className = 'topping-badge bg-white p-3 rounded-xl shadow-sm text-center cursor-pointer';
+                // Added 'topping-badge' class for styling and 'selected' for visual feedback
+                toppingElement.className = 'topping-badge bg-white p-3 rounded-xl shadow-sm text-center cursor-pointer transition transform hover:scale-105'; // Added hover effect
                 toppingElement.dataset.id = topping.id;
                 toppingElement.dataset.name = topping.name;
                 toppingElement.dataset.price = topping.price; 
 
+                // Check if topping is already selected and add 'selected' class
                 const isSelected = selectedToppingsForCurrentBowl.some(t => t.id === topping.id);
                 if (isSelected) {
-                    toppingElement.classList.add('topping-selected');
+                    toppingElement.classList.add('selected');
                 }
 
                 toppingElement.innerHTML = `
-                    <div class="bg-pink-100 w-12 h-12 mx-auto rounded-full flex items-center justify-center mb-2">
+                    <div class="w-12 h-12 mx-auto rounded-full flex items-center justify-center mb-2">
                         ${getSvgForTopping(topping.id)}
                     </div>
                     <h3 class="font-medium text-gray-800 text-sm">${topping.name}</h3>
-                    <!-- Price removed as toppings are free -->
                 `;
                 customizeToppingsContainer.appendChild(toppingElement);
 
@@ -1106,18 +1115,38 @@
         }
 
         function getSvgForTopping(id) {
-            // Re-using the SVG logic from the previous version
+            // Ensure all SVGs have width="100%" height="100%" and appropriate viewBox
             switch(id) {
-                case 't1': return `<svg class="w-6 h-6 text-orange-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>`;
-                case 't2': return `<svg class="w-6 h-6 text-amber-700" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" /></svg>`;
-                case 't3': return `<svg class="w-6 h-6 text-gray-700" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" /></svg>`;
-                case 't4': return `<svg class="w-6 h-6 text-purple-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14" /></svg>`;
-                case 't5': return `<svg class="w-6 h-6 text-red-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" /></svg>`;
-                case 't6': return `<svg class="w-6 h-6 text-yellow-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`;
-                // Removed Mango topping SVG case (t7)
-                case 't8': return `<svg class="w-6 h-6 text-yellow-700" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>`;
+                case 't1': return `<svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="40" fill="#d4a76a" /><circle cx="35" cy="40" r="5" fill="#b38040" /><circle cx="60" cy="35" r="6" fill="#b38040" /><circle cx="45" cy="60" r="7" fill="#b38040" /><circle cx="65" cy="55" r="4" fill="#b38040" /></svg>`;
+                case 't2': return `<svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="40" fill="#d4a76a" /><path d="M30,40 Q50,60 70,40" stroke="#b38040" stroke-width="5" fill="none" /><path d="M30,50 Q50,70 70,50" stroke="#b38040" stroke-width="5" fill="none" /></svg>`;
+                case 't3': return `<svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="40" fill="#f0f0f0" /><circle cx="40" cy="40" r="3" fill="#333" /><circle cx="50" cy="35" r="3" fill="#333" /><circle cx="60" cy="40" r="3" fill="#333" /><circle cx="35" cy="50" r="3" fill="#333" /><circle cx="45" cy="45" r="3" fill="#333" /><circle cx="55" cy="50" r="3" fill="#333" /><circle cx="65" cy="45" r="3" fill="#333" /><circle cx="40" cy="60" r="3" fill="#333" /><circle cx="50" cy="55" r="3" fill="#333" /><circle cx="60" cy="60" r="3" fill="#333" /></svg>`;
+                case 't4': return `<svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="40" fill="#6a4c93" /><circle cx="40" cy="40" r="5" fill="#8662b2" /><circle cx="60" cy="45" r="6" fill="#8662b2" /><circle cx="45" cy="60" r="7" fill="#8662b2" /></svg>`;
+                case 't5': return `<svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="40" fill="#ff6b6b" /><circle cx="50" cy="30" r="5" fill="#ff8080" /><path d="M45,35 L55,35 L50,45 Z" fill="#00cc00" /></svg>`;
+                case 't6': return `<svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M30,50 C30,30 70,30 70,50 C70,70 30,70 30,50" fill="#ffe066" /></svg>`;
+                case 't8': return `<svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="40" fill="#f9dc5c" /><path d="M30,40 Q50,60 70,40" stroke="#f3c42e" stroke-width="5" fill="none" /><path d="M30,50 Q50,70 70,50" stroke="#f3c42e" stroke-width="5" fill="none" /></svg>`;
                 default: return '';
             }
+        }
+
+        function toggleToppingInCustomization(toppingElement) {
+            const toppingId = toppingElement.dataset.id;
+            const toppingName = toppingElement.dataset.name;
+            const toppingPrice = parseFloat(toppingElement.dataset.price);
+
+            const existingToppingIndex = selectedToppingsForCurrentBowl.findIndex(t => t.id === toppingId);
+
+            if (existingToppingIndex > -1) {
+                // Topping is already selected, remove it
+                selectedToppingsForCurrentBowl.splice(existingToppingIndex, 1);
+                toppingElement.classList.remove('selected');
+                showNotification(`"${toppingName}" removido.`, 'info');
+            } else {
+                // Topping is not selected, add it
+                selectedToppingsForCurrentBowl.push({ id: toppingId, name: toppingName, price: toppingPrice });
+                toppingElement.classList.add('selected');
+                showNotification(`"${toppingName}" añadido.`, 'success');
+            }
+            updateCustomizeTotalPrice(); // Update total price (though toppings are free, it's good practice)
         }
 
         function updateCustomizeTotalPrice() {
