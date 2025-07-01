@@ -377,7 +377,7 @@
                 <div id="customizeToppingsContainer" class="grid grid-cols-2 sm:grid-cols-3 gap-3">
                     <!-- Toppings will be loaded here dynamically -->
                 </div>
-                <p class="text-lg font-semibold text-right mt-4">Total con toppings: <span id="customizeTotalPrice">$0.00</span></p>
+                <p class="text-lg font-semibold text-right mt-4">Total con toppings: <span id="customizeTotalPrice">S/. 0.00</span></p>
             </div>
             <button id="addCustomizedBowlToCartBtn" class="btn-primary px-6 py-3 rounded-lg shadow-lg transition w-full">
                 Añadir al Carrito
@@ -407,11 +407,11 @@
                 <div class="border-t border-gray-200 pt-4">
                     <div class="flex justify-between mb-2">
                         <span class="font-medium">Subtotal:</span>
-                        <span id="cartSubtotal">$0.00</span>
+                        <span id="cartSubtotal">S/. 0.00</span>
                     </div>
                     <div class="flex justify-between mb-4">
                         <span class="font-medium">Total:</span>
-                        <span id="cartTotal" class="font-bold text-pink-600">$0.00</span>
+                        <span id="cartTotal" class="font-bold text-pink-600">S/. 0.00</span>
                     </div>
                     <div class="mb-4">
                         <label for="customerName" class="block text-gray-700 mb-2">Tu nombre:</label>
@@ -500,7 +500,7 @@
             <p class="text-gray-600 text-center mb-12">Descubre nuestra variedad de deliciosos bowls preparados con frutas frescas orgánicas de temporada.</p>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Bowl 1 -->
+                <!-- Bowl 1: Fresa -->
                 <div class="card bg-white rounded-xl shadow-md overflow-hidden">
                     <div class="h-48 bg-pink-100 flex items-center justify-center">
                         <svg class="w-32 h-32" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
@@ -516,13 +516,13 @@
                         <h3 class="text-xl font-semibold mb-2">Bowl de Fresa</h3>
                         <p class="text-gray-600 mb-4">Base de yogurt natural con fresas frescas y tu elección de toppings.</p>
                         <div class="flex justify-between items-center">
-                            <span class="text-xl font-bold text-pink-600">$8.99</span>
-                            <button class="add-to-cart btn-primary px-4 py-2 rounded-lg" data-id="1" data-name="Bowl de Fresa" data-price="8.99">Añadir al Carrito</button>
+                            <span class="text-xl font-bold text-pink-600">S/. 11.50</span>
+                            <button class="add-to-cart btn-primary px-4 py-2 rounded-lg" data-id="1" data-name="Bowl de Fresa" data-price="11.50">Añadir al Carrito</button>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Bowl 2 -->
+                <!-- Bowl 2: Mango -->
                 <div class="card bg-white rounded-xl shadow-md overflow-hidden">
                     <div class="h-48 bg-yellow-100 flex items-center justify-center">
                         <svg class="w-32 h-32" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
@@ -538,57 +538,37 @@
                         <h3 class="text-xl font-semibold mb-2">Bowl de Mango</h3>
                         <p class="text-gray-600 mb-4">Base de yogurt natural con mango fresco y tu elección de toppings.</p>
                         <div class="flex justify-between items-center">
-                            <span class="text-xl font-bold text-pink-600">$9.49</span>
-                            <button class="add-to-cart btn-primary px-4 py-2 rounded-lg" data-id="2" data-name="Bowl de Mango" data-price="9.49">Añadir al Carrito</button>
+                            <span class="text-xl font-bold text-pink-600">S/. 11.50</span>
+                            <button class="add-to-cart btn-primary px-4 py-2 rounded-lg" data-id="2" data-name="Bowl de Mango" data-price="11.50">Añadir al Carrito</button>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Bowl 3 -->
+                <!-- Bowl 3: Maracuyá (Reemplazo de Plátano) -->
                 <div class="card bg-white rounded-xl shadow-md overflow-hidden">
-                    <div class="h-48 bg-yellow-50 flex items-center justify-center">
+                    <div class="h-48 bg-orange-100 flex items-center justify-center">
+                        <!-- Nuevo SVG para Maracuyá, similar al de Mango pero con colores de maracuyá -->
                         <svg class="w-32 h-32" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="100" cy="120" r="70" fill="#f8f9fa" />
-                            <circle cx="70" cy="90" r="20" fill="#ffe066" />
-                            <circle cx="100" cy="80" r="25" fill="#ffe680" />
-                            <circle cx="130" cy="90" r="20" fill="#ffed99" />
-                            <circle cx="85" cy="110" r="15" fill="#fff3b3" />
-                            <circle cx="115" cy="110" r="15" fill="#fff9cc" />
+                            <circle cx="100" cy="120" r="70" fill="#f8f9fa" /> <!-- Fondo del bowl -->
+                            <circle cx="70" cy="90" r="20" fill="#FFD700" /> <!-- Pieza de maracuyá 1 (amarillo vibrante) -->
+                            <circle cx="100" cy="80" r="25" fill="#FFA500" /> <!-- Pieza de maracuyá 2 (naranja más suave) -->
+                            <circle cx="130" cy="90" r="20" fill="#FFD700" /> <!-- Pieza de maracuyá 3 -->
+                            <circle cx="85" cy="110" r="15" fill="#8D6E63" /> <!-- Semilla 1 (marrón oscuro) -->
+                            <circle cx="115" cy="110" r="15" fill="#8D6E63" /> <!-- Semilla 2 -->
+                            <circle cx="95" cy="95" r="10" fill="#8D6E63" /> <!-- Semilla 3 -->
                         </svg>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Bowl de Plátano</h3>
-                        <p class="text-gray-600 mb-4">Base de yogurt natural con plátano fresco y tu elección de toppings.</p>
+                        <h3 class="text-xl font-semibold mb-2">Bowl de Maracuyá</h3>
+                        <p class="text-gray-600 mb-4">Base de yogurt natural con maracuyá fresca y tu elección de toppings.</p>
                         <div class="flex justify-between items-center">
-                            <span class="text-xl font-bold text-pink-600">$8.49</span>
-                            <button class="add-to-cart btn-primary px-4 py-2 rounded-lg" data-id="3" data-name="Bowl de Plátano" data-price="8.49">Añadir al Carrito</button>
+                            <span class="text-xl font-bold text-pink-600">S/. 11.50</span>
+                            <button class="add-to-cart btn-primary px-4 py-2 rounded-lg" data-id="3" data-name="Bowl de Maracuyá" data-price="11.50">Añadir al Carrito</button>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Bowl 4 -->
-                <div class="card bg-white rounded-xl shadow-md overflow-hidden">
-                    <div class="h-48 bg-purple-100 flex items-center justify-center">
-                        <svg class="w-32 h-32" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="100" cy="120" r="70" fill="#f8f9fa" />
-                            <circle cx="70" cy="90" r="20" fill="#6a4c93" />
-                            <circle cx="100" cy="80" r="25" fill="#8662b2" />
-                            <circle cx="130" cy="90" r="20" fill="#a379d1" />
-                            <circle cx="85" cy="110" r="15" fill="#bf90ef" />
-                            <circle cx="115" cy="110" r="15" fill="#dba6ff" />
-                        </svg>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Bowl de Arándanos</h3>
-                        <p class="text-gray-600 mb-4">Base de yogurt natural con arándanos frescos y tu elección de toppings.</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-xl font-bold text-pink-600">$9.99</span>
-                            <button class="add-to-cart btn-primary px-4 py-2 rounded-lg" data-id="4" data-name="Bowl de Arándanos" data-price="9.99">Añadir al Carrito</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Bowl 5 -->
+                <!-- Bowl 4: Mix de Frutas (anteriormente Bowl 5, ahora 4) -->
                 <div class="card bg-white rounded-xl shadow-md overflow-hidden">
                     <div class="h-48 bg-gradient-to-br from-pink-100 via-yellow-100 to-purple-100 flex items-center justify-center">
                         <svg class="w-32 h-32" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
@@ -604,8 +584,8 @@
                         <h3 class="text-xl font-semibold mb-2">Bowl Mix de Frutas</h3>
                         <p class="text-gray-600 mb-4">Base de yogurt natural con variedad de frutas frescas y tu elección de toppings.</p>
                         <div class="flex justify-between items-center">
-                            <span class="text-xl font-bold text-pink-600">$10.49</span>
-                            <button class="add-to-cart btn-primary px-4 py-2 rounded-lg" data-id="5" data-name="Bowl Mix de Frutas" data-price="10.49">Añadir al Carrito</button>
+                            <span class="text-xl font-bold text-pink-600">S/. 11.50</span>
+                            <button class="add-to-cart btn-primary px-4 py-2 rounded-lg" data-id="5" data-name="Bowl Mix de Frutas" data-price="11.50">Añadir al Carrito</button>
                         </div>
                     </div>
                 </div>
@@ -632,8 +612,7 @@
                         </svg>
                     </div>
                     <h3 class="text-lg font-semibold mb-2">Granola</h3>
-                    <p class="text-pink-600 font-medium">$1.50</p>
-                    <!-- Removed add button from here, as selection happens in modal -->
+                    <!-- Price removed as toppings are free -->
                 </div>
                 
                 <!-- Topping 2 -->
@@ -646,7 +625,7 @@
                         </svg>
                     </div>
                     <h3 class="text-lg font-semibold mb-2">Crema de Maní</h3>
-                    <p class="text-pink-600 font-medium">$1.75</p>
+                    <!-- Price removed as toppings are free -->
                 </div>
                 
                 <!-- Topping 3 -->
@@ -667,10 +646,10 @@
                         </svg>
                     </div>
                     <h3 class="text-lg font-semibold mb-2">Semillas de Chía</h3>
-                    <p class="text-pink-600 font-medium">$1.25</p>
+                    <!-- Price removed as toppings are free -->
                 </div>
                 
-                <!-- Topping 4 -->
+                <!-- Topping 4: Arándanos -->
                 <div class="card bg-white rounded-xl shadow-sm p-6 text-center">
                     <div class="h-24 flex items-center justify-center mb-4">
                         <svg class="w-16 h-16" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -681,7 +660,7 @@
                         </svg>
                     </div>
                     <h3 class="text-lg font-semibold mb-2">Arándanos</h3>
-                    <p class="text-pink-600 font-medium">$2.00</p>
+                    <!-- Price removed as toppings are free -->
                 </div>
                 
                 <!-- Topping 5 -->
@@ -694,10 +673,10 @@
                         </svg>
                     </div>
                     <h3 class="text-lg font-semibold mb-2">Fresas</h3>
-                    <p class="text-pink-600 font-medium">$1.75</p>
+                    <!-- Price removed as toppings are free -->
                 </div>
                 
-                <!-- Topping 6 -->
+                <!-- Topping 6: Plátano -->
                 <div class="card bg-white rounded-xl shadow-sm p-6 text-center">
                     <div class="h-24 flex items-center justify-center mb-4">
                         <svg class="w-16 h-16" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -705,22 +684,10 @@
                         </svg>
                     </div>
                     <h3 class="text-lg font-semibold mb-2">Plátano</h3>
-                    <p class="text-pink-600 font-medium">$1.50</p>
+                    <!-- Price removed as toppings are free -->
                 </div>
                 
-                <!-- Topping 7 -->
-                <div class="card bg-white rounded-xl shadow-sm p-6 text-center">
-                    <div class="h-24 flex items-center justify-center mb-4">
-                        <svg class="w-16 h-16" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="50" cy="50" r="40" fill="#ffd166" />
-                            <path d="M30,50 Q50,70 70,50 Q50,30 30,50" fill="#ffda85" />
-                        </svg>
-                    </div>
-                    <h3 class="text-lg font-semibold mb-2">Mango</h3>
-                    <p class="text-pink-600 font-medium">$2.00</p>
-                </div>
-                
-                <!-- Topping 8 -->
+                <!-- Topping 7: Miel (anteriormente Topping 8, ahora 7) -->
                 <div class="card bg-white rounded-xl shadow-sm p-6 text-center">
                     <div class="h-24 flex items-center justify-center mb-4">
                         <svg class="w-16 h-16" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -730,7 +697,7 @@
                         </svg>
                     </div>
                     <h3 class="text-lg font-semibold mb-2">Miel</h3>
-                    <p class="text-pink-600 font-medium">$1.00</p>
+                    <!-- Price removed as toppings are free -->
                 </div>
             </div>
         </div>
@@ -979,7 +946,7 @@
         // --- Utility Functions ---
 
         function formatPrice(price) {
-            return `$${parseFloat(price).toFixed(2)}`;
+            return `S/. ${parseFloat(price).toFixed(2)}`; // Changed currency symbol
         }
 
         function generateUniqueId() {
@@ -1016,10 +983,8 @@
             } else {
                 emptyCartMessage.classList.add('hidden');
                 cart.forEach(item => {
-                    let itemPriceIncludingToppings = item.price;
-                    item.toppings.forEach(topping => {
-                        itemPriceIncludingToppings += topping.price;
-                    });
+                    // Toppings are free, so their price doesn't add to itemPriceIncludingToppings
+                    let itemPriceIncludingToppings = item.price; 
                     const itemTotal = itemPriceIncludingToppings * item.quantity;
                     subtotal += itemTotal;
 
@@ -1090,14 +1055,14 @@
 
         // --- Customize Bowl Logic ---
         const allToppings = [
-            { name: "Granola", price: 1.50, id: "t1" },
-            { name: "Crema de Maní", price: 1.75, id: "t2" },
-            { name: "Semillas de Chía", price: 1.25, id: "t3" },
-            { name: "Arándanos", price: 2.00, id: "t4" },
-            { name: "Fresas", price: 1.75, id: "t5" },
-            { name: "Plátano", price: 1.50, id: "t6" },
-            { name: "Mango", price: 2.00, id: "t7" },
-            { name: "Miel", price: 1.00, id: "t8" }
+            { name: "Granola", price: 0.00, id: "t1" }, 
+            { name: "Crema de Maní", price: 0.00, id: "t2" },
+            { name: "Semillas de Chía", price: 0.00, id: "t3" },
+            { name: "Arándanos", price: 0.00, id: "t4" },
+            { name: "Fresas", price: 0.00, id: "t5" },
+            { name: "Plátano", price: 0.00, id: "t6" },
+            // Removed Mango topping
+            { name: "Miel", price: 0.00, id: "t8" }
         ];
 
         function openCustomizeBowlModal(bowlName, bowlPrice, bowlId) {
@@ -1115,7 +1080,7 @@
                 toppingElement.className = 'topping-badge bg-white p-3 rounded-xl shadow-sm text-center cursor-pointer';
                 toppingElement.dataset.id = topping.id;
                 toppingElement.dataset.name = topping.name;
-                toppingElement.dataset.price = topping.price;
+                toppingElement.dataset.price = topping.price; 
 
                 const isSelected = selectedToppingsForCurrentBowl.some(t => t.id === topping.id);
                 if (isSelected) {
@@ -1127,7 +1092,7 @@
                         ${getSvgForTopping(topping.id)}
                     </div>
                     <h3 class="font-medium text-gray-800 text-sm">${topping.name}</h3>
-                    <p class="text-xs text-gray-500">${formatPrice(topping.price)}</p>
+                    <!-- Price removed as toppings are free -->
                 `;
                 customizeToppingsContainer.appendChild(toppingElement);
 
@@ -1149,38 +1114,15 @@
                 case 't4': return `<svg class="w-6 h-6 text-purple-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14" /></svg>`;
                 case 't5': return `<svg class="w-6 h-6 text-red-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" /></svg>`;
                 case 't6': return `<svg class="w-6 h-6 text-yellow-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`;
-                case 't7': return `<svg class="w-6 h-6 text-orange-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg>`;
+                // Removed Mango topping SVG case (t7)
                 case 't8': return `<svg class="w-6 h-6 text-yellow-700" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>`;
                 default: return '';
             }
         }
 
-        function toggleToppingInCustomization(toppingElement) {
-            const toppingId = toppingElement.dataset.id;
-            const toppingName = toppingElement.dataset.name;
-            const toppingPrice = parseFloat(toppingElement.dataset.price);
-
-            const existingIndex = selectedToppingsForCurrentBowl.findIndex(t => t.id === toppingId);
-
-            if (existingIndex > -1) {
-                // Remove topping
-                selectedToppingsForCurrentBowl.splice(existingIndex, 1);
-                toppingElement.classList.remove('topping-selected');
-                showNotification(`Topping "${toppingName}" eliminado.`, 'info');
-            } else {
-                // Add topping
-                selectedToppingsForCurrentBowl.push({ id: toppingId, name: toppingName, price: toppingPrice });
-                toppingElement.classList.add('topping-selected');
-                showNotification(`Topping "${toppingName}" añadido.`, 'info');
-            }
-            updateCustomizeTotalPrice();
-        }
-
         function updateCustomizeTotalPrice() {
+            // Toppings are free, so total is just the base bowl price
             let total = currentBowlForCustomization.price;
-            selectedToppingsForCurrentBowl.forEach(topping => {
-                total += topping.price;
-            });
             customizeTotalPrice.textContent = formatPrice(total);
         }
 
@@ -1225,10 +1167,8 @@
                         ${order.customerEmail ? `<p class="text-sm text-gray-600 mb-2">Email: ${order.customerEmail}</p>` : ''}
                         <ul class="list-disc list-inside ml-4 mt-2 text-gray-700">
                             ${order.items.map(item => {
+                                // Toppings are free, so their price doesn't add to itemPriceIncludingToppings
                                 let itemPriceIncludingToppings = item.price;
-                                item.toppings.forEach(topping => {
-                                    itemPriceIncludingToppings += topping.price;
-                                });
                                 return `
                                 <li>${item.name} x ${item.quantity} (${formatPrice(itemPriceIncludingToppings)}) 
                                     ${item.toppings && item.toppings.length > 0 ? `(Toppings: ${item.toppings.map(t => t.name).join(', ')})` : ''}
@@ -1369,11 +1309,8 @@
             }
 
             const orderTotal = cart.reduce((sum, item) => {
-                let itemPrice = item.price * item.quantity;
-                item.toppings.forEach(topping => {
-                    itemPrice += topping.price * item.quantity;
-                });
-                return sum + itemPrice;
+                // Toppings are free, so their price is not added here
+                return sum + (item.price * item.quantity);
             }, 0);
 
             const newOrderId = generateUniqueId();
